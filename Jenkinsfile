@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh 'docker stop config-production || true'
                 sh 'docker build -t config .'
-                sh 'docker run -d --rm -p 8888:8888 --name config-production config'
+                sh 'docker run -d --rm --network host -p 8888:8888 --name config-production config'
             }
         }
     }
